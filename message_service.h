@@ -20,7 +20,9 @@ private:
 
 public:
   // 메시지를 전송한다
-  void send(std::string message);
+  void send(std::string message) {};
+  // 메시지를 담은 패킷을 받는다
+  void received(Packet *packet) {};
 };
 
 #endif

@@ -5,6 +5,7 @@
 #include "packet.h"
 #include "service.h"
 #include <vector>
+#include <iostream>
 
 class Host : public Node {
   friend class ServiceInstaller;
@@ -25,6 +26,9 @@ public:
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet);
+
+  // 패킷을 받는다
+  void received(Packet *packet);
 };
 
 #endif

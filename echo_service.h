@@ -12,6 +12,11 @@ class EchoService : public Service {
 
 private:
   EchoService(Host *host, short port) : Service(host, port) {}
+public:
+  // 받은 메시지를 반송한다
+  void send(std::string message) {};
+  // 메시지를 담은 패킷을 받는다
+  void received(Packet *packet) {};
 };
 
 #endif
