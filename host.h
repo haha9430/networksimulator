@@ -4,6 +4,7 @@
 #include "address.h"
 #include "packet.h"
 #include "service.h"
+#include "link.h"
 #include <vector>
 #include <iostream>
 

@@ -2,5 +2,6 @@
 
 Link* LinkInstaller::install(Node* a, Node* b) {
     Link* L = new Link(a, b);
+    a->addLink(L);
     return L;
 }

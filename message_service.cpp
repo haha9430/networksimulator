@@ -2,7 +2,7 @@
 
 void MessageService::send(std::string message) {
     Packet* p = new Packet(Service::host_->address(), destAddress_, destPort_, Service::port_, message);
-    Service::host_->send(p);
+    Service::host_->send(p); // (service -> host)
 }
 
 void MessageService::received(Packet *packet) {

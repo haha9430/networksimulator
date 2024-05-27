@@ -11,7 +11,19 @@ void Host::initialize() {
 
 // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
 void Host::send(Packet *packet) {
-    
+    for (int i = 0; i < links_.size(); i++) {
+        // links_[i]의 nodeA_
+        Node* nodeA = links_[i]->returnNodeA();
+        // nodeA의 id
+        int nodeA_id = nodeA->id();
+        // 해당 호스트의 id
+        int this_id = this->id();
+        if (nodeA_id == this_id) {
+            // links_[i]의 send 함수 동작 (host -> link)
+            links_[i]->send(packet);
+            return;
+        } 
+    }
 }
 
 // 패킷을 받는다

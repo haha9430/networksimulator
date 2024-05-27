@@ -17,9 +17,17 @@ class Router : public Node {
 protected:
   std::vector<RoutingEntry> routingTable_;
 public:
-  void sendToLink() {
-
-  };
+  void send(Packet *packet) {
+    // 패킷의 목적지 주소
+    Address packet_destAddress = packet->destAddress();
+    for (int i = 0; i < routingTable_.size(); i++) {
+      if (packet_destAddress == routingTable_[i].destination) {
+        Link* link = routingTable_[i].nextLink;
+        link->send(packet); // (router -> link)
+        return;
+      }
+    }
+  }
 };
 
 #endif
