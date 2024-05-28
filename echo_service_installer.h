@@ -14,7 +14,14 @@ public:
   EchoServiceInstaller(short listenPort) : listenPort_(listenPort) {}
 
   // 호스트에 EchoService를 설치한다.
-  EchoService *install(Host *host);
+  EchoService *install(Host *host) {
+    // 에코 서비스 객체 선언
+    EchoService* es = new EchoService(host, listenPort_);
+    // 에코 서비스 설치
+    ServiceInstaller::install(host, es);
+
+    return es;
+  }
 };
 
 #endif

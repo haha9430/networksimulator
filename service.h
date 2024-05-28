@@ -17,9 +17,13 @@ protected:
 
   Service(Host *host, int port) : host_(host), port_(port) {}
 
+public:
+  short returnPort() {
+    return port_;
+  }
   // 호스트의 서비스 목록에서
-  virtual void send(std::string message) = 0;
-  virtual void received(Packet *packet) = 0;
+  void send(std::string message);
+  void received(Packet *packet);
 };
 
 #endif
