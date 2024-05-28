@@ -24,10 +24,10 @@ public:
     links_.push_back(link);
   }
 
-  Address address() {};
+  Address address();
   // Node를 부모 클래스로 하는 자식 클래스들이 Node 타입에서도 send 함수를 쓸 수 있음.
-  void send(Packet *packet) {};
-  void received(Packet *packet) {};
+  void send(Packet *packet) {}
+  void received(Packet *packet) {}
 };
 
 #endif

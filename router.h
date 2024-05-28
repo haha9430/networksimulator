@@ -20,10 +20,11 @@ public:
   void send(Packet *packet) {
     // 패킷의 목적지 주소
     Address packet_destAddress = packet->destAddress();
-    for (int i = 0; i < routingTable_.size(); i++) {
+    for (int i = 0; i < (int)routingTable_.size(); i++) {
       if (packet_destAddress == routingTable_[i].destination) {
         Link* link = routingTable_[i].nextLink;
-        link->send(packet); // (router -> link)
+        Node* router = this;
+        link->send(packet, router); // (router -> link)
         return;
       }
     }
