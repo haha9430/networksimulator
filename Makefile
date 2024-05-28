@@ -1,6 +1,9 @@
 CC = g++
 CFLAGS = -g -Wall -Werror -std=c++11
 
+node.o: node.cpp
+	$(CC) $(CFLAGS) -c node.cpp
+
 all: first
 
 first.o: scenarios/first.cpp
@@ -10,7 +13,7 @@ second.o: scenarios/second.cpp
 	$(CC) $(CFLAGS) -c scenarios/second.cpp
 
 first: first.o
-	$(CC) $(CFLAGS) -o first
+	$(CC) $(CFLAGS) -o first first.o node.o
 
 second: second.o
 	$(CC) $(CFLAGS) -o second second.o
