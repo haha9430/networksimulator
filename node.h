@@ -37,11 +37,7 @@ public:
   void send(Packet *packet) {
     return;
   }
-  void received(Packet *packet) {
-    return;
-  }
+  virtual void received(Packet *packet) = 0;
 };
-
-
 
 #endif

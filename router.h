@@ -2,6 +2,7 @@
 #define ROUTER_H
 
 #include "node.h"
+#include "link.h"
 #include <iostream>
 
 struct RoutingEntry {
@@ -17,18 +18,8 @@ class Router : public Node {
 protected:
   std::vector<RoutingEntry> routingTable_;
 public:
-  void send(Packet *packet) {
-    // 패킷의 목적지 주소
-    Address packet_destAddress = packet->destAddress();
-    for (int i = 0; i < (int)routingTable_.size(); i++) {
-      if (packet_destAddress == routingTable_[i].destination) {
-        Link* link = routingTable_[i].nextLink;
-        Node* router = this;
-        link->send(packet, router); // (router -> link)
-        return;
-      }
-    }
-  }
+  void send(Packet *packet);
+  void received(Packet *Packet) override;
 };
 
 #endif

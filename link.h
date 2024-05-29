@@ -4,6 +4,7 @@
 #include "packet.h"
 #include "node.h"
 #include <cstdlib>
+#include <iostream>
 
 //class Node;
 
@@ -20,25 +21,9 @@ private:
     return node == nodeA_ ? nodeB_ : nodeA_;
   }
 public:
-  Node *returnNodeA() {
-    return nodeA_;
-  }
-  Node *returnNodeB() {
-    return nodeB_;
-  }
-  void send(Packet *packet, Node *node) {
-    // 링크를 호출한 노드
-    Node* link_node = other(node);
-    // 링크를 호출한 노드가 nodeB_라면 nodeA_에게 패킷을 전달
-    if (link_node == nodeB_) {
-      nodeA_->received(packet);
-    }
-    // 링크를 호출한 노드가 nodeA_라면 nodeB_에게 패킷을 전달
-    else {
-      nodeB_->received(packet);
-    }
-    return;
-  }
+  Node *returnNodeA();
+  Node *returnNodeB();
+  void send(Packet *packet, Node *node);
 };
 
 #endif

@@ -20,18 +20,9 @@ private:
 
 public:
   // 메시지를 전송한다
-  void send(std::string message) {
-    Packet* p = new Packet(Service::host_->address(), destAddress_, Service::port_, destPort_, message);
-    Service::host_->send(p); // (service -> host)
-  };
+  void send(std::string message);
   // 메시지를 담은 패킷을 받는다
-  void received(Packet *packet) {
-    std::cout << "MessageService: receied";
-    /*
-    Host #1: received packet, destination port: 1000
-    MessageService: received "Hello, world!" from 1:3000
-    */
-  };
+  void received(Packet *packet);
 };
 
 #endif
