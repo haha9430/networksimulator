@@ -48,8 +48,8 @@ second.o: scenarios/second.cpp
 first: first.o node.o host.o link.o link_installer.o router.o manual_router.o service.o service_installer.o message_service.o message_service_installer.o echo_service.o echo_service_installer.o
 	$(CC) $(CFLAGS) -o first first.o node.o host.o link.o link_installer.o router.o manual_router.o service.o service_installer.o message_service.o message_service_installer.o echo_service.o echo_service_installer.o
 
-second: second.o
-	$(CC) $(CFLAGS) -o second second.o
+second: second.o node.o host.o link.o link_installer.o router.o manual_router.o service.o service_installer.o message_service.o message_service_installer.o echo_service.o echo_service_installer.o
+	$(CC) $(CFLAGS) -o second second.o node.o host.o link.o link_installer.o router.o manual_router.o service.o service_installer.o message_service.o message_service_installer.o echo_service.o echo_service_installer.o
 
 clean:
 	rm -f *.o first

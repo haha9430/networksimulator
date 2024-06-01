@@ -18,8 +18,8 @@ class Router : public Node {
 protected:
   std::vector<RoutingEntry> routingTable_;
 public:
-  void send(Packet *packet);
-  void received(Packet *Packet) override;
+  void send(Packet *packet) override;
+  void received(Packet *packet) override;
 };
 
 #endif

@@ -13,8 +13,9 @@ class EchoService : public Service {
 private:
   EchoService(Host *host, short port) : Service(host, port) {}
 public:
+  void send(std::string message) override;
   // 메시지를 담은 패킷을 받고 반송한다.
-  void received(Packet *packet);
+  void received(Packet *packet) override;
 };
 
 #endif

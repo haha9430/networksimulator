@@ -10,14 +10,13 @@ void Router::send(Packet *packet) {
             Address a = packet->srcAddress();
             Address b = packet->destAddress();
             std::vector<char> c = packet->data();
-            std::cout << "Router #" << router->id() << "forwarding packet (from: " << a.toString() << ", to: " << b.toString() << ", " << (int)c.size() << " bytes)";
+            std::cout << "Router #" << router->id() << ": forwarding packet (from: " << a.toString() << ", to: " << b.toString() << ", " << (int)c.size() << " bytes)" << std::endl;
             link->send(packet, router); // (router -> link)
             return;
         }
     }
 }
 
-void Router::received(Packet *packet) {
-    std::cout << "received router" << std::endl;
+void Router::received(Packet *packet){
     send(packet);
 }

@@ -3,6 +3,7 @@
 
 #include "packet.h"
 #include <vector>
+#include <iostream>
 
 class Link;
 
@@ -21,6 +22,8 @@ public:
   Node() : id_(nextId_++) {}
   int id() const { return id_; }
 
+  virtual ~Node() = default;
+
   bool operator ==(Node* node) {
     bool b = false;
     if (id_ == node->id()) {
@@ -34,10 +37,8 @@ public:
 
   Address address();
   // Node를 부모 클래스로 하는 자식 클래스들이 Node 타입에서도 send 함수를 쓸 수 있음.
-  void send(Packet *packet) {
-    return;
-  }
-  virtual void received(Packet *packet) = 0;
+  virtual void send(Packet *packet);
+  virtual void received(Packet *packet);
 };
 
 #endif

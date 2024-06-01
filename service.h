@@ -20,8 +20,8 @@ protected:
 public:
   short returnPort();
   // 호스트의 서비스 목록에서
-  void send(std::string message) {}
-  void received(Packet *packet) {}
+  virtual void send(std::string message);
+  virtual void received(Packet *packet);
 };
 
 #endif

@@ -11,7 +11,8 @@ private:
   Address destAddress_;
   // 목적지 포트
   short destPort_;
-
+  // 메시지 서비스 포트
+  static short port_;
 public:
   MessageServiceInstaller(const Address &destAddress, short destPort)
       : destAddress_(destAddress), destPort_(destPort) {}

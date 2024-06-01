@@ -25,7 +25,7 @@ void Host::send(Packet *packet) {
 
         Address srcAddress = packet->srcAddress();
         Address destAddress = packet->destAddress();
-        std::cout << "nodeA id: " << nodeA_id << ", nodeB id: " << nodeB_id << ", this id: " << this_id << std::endl;
+        //std::cout << "nodeA id: " << nodeA_id << ", nodeB id: " << nodeB_id << ", this id: " << this_id << std::endl;
         // nodeA_ 혹은 nodeB_가 해당 호스트일 경우
         if (nodeA_id == this_id || nodeB_id == this_id) {
             // links_[i]의 send 함수 동작 (host -> link)
@@ -42,10 +42,14 @@ void Host::received(Packet *packet) {
     for (int i = 0; i < (int)links_.size(); i++) {
         // services_[i]의 포트
         short port_ = services_[i]->returnPort();
+        // 패킷의 주소
+        //Address destAddress = packet->destAddress();
+        //std::cout << "packet destAddress : " << destAddress.toString() << ", host address : " << address_.toString() << std::endl;
         // 패킷과 호스트, 서비스의 주소 및 포트 확인
         if (address_ == packet->destAddress() && port_ == packet->destPort()) {
             // 패킷을 받았다는 문장 출력
-            std::cout << "Host #" << address_.toString() <<  ": received packet, destination port: " << packet->destPort() << "\n";
+            std::cout << "Host #" << id() <<  ": received packet, destination port: " << packet->destPort() << "\n";
+            services_[i]->received(packet);
             // services_[i]의 received 함수 동작 (host -> service)
             //services_[i]->received(packet);
         }

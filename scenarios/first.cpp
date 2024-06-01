@@ -40,9 +40,7 @@ int main() {
   links.push_back(linkInstaller.install(routers[1], routers[3]));    // 3
   links.push_back(linkInstaller.install(routers[2], routers[3]));    // 4
   links.push_back(linkInstaller.install(routers[3], messageClient)); // 5
-  // Node* node123 = links[5]->returnNodeB();
-  // std::cout << node123->id() << std::endl;
-  // 라우팅 테이블을 설정한다.
+
   routers[0]->addRoutingEntry(echoServer->address(), links[0]);
   routers[0]->addRoutingEntry(messageClient->address(), links[1]);
   routers[0]->addRoutingEntry(messageClient->address(), links[2]);
