@@ -12,7 +12,10 @@ void EchoService::received(Packet *packet) {
     short destPort = packet->srcPort();
     // 메시지
     std::string message = packet->dataString();
-    Packet* p = new Packet(Service::host_->address(), destAddress, Service::port_, destPort, message);
-    std::cout << "EchoService: received \"" << message << "\" from " << destAddress.toString() << ":" << destPort << ", send reply with same data" << std::endl;
-    Service::host_->send(p); // (service -> host)
+    //std::cout << packet->destAddress().toString() << ", " << host_->address().toString() << ", " << packet->destPort() << ", " << Service::port_ << std::endl;
+    if (packet->destAddress() == host_->address() && packet->destPort() == Service::port_) {
+        Packet* p = new Packet(Service::host_->address(), destAddress, Service::port_, destPort, message);
+        std::cout << "EchoService: received \"" << message << "\" from " << destAddress.toString() << ":" << destPort << ", send reply with same data" << std::endl;
+        Service::host_->send(p); // (service -> host)
+    }
 }

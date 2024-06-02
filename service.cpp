@@ -1,5 +1,7 @@
 #include "service.h"
 
+//short Service::nextPort_ = 1000;
+
 short Service::returnPort() {
     return port_;
 }
@@ -9,4 +11,7 @@ void Service::send(std::string message) {
 }
 void Service::received(Packet *packet) {
     std::cout << "node received" << std::endl;
+}
+void Service::nextPort() {
+    port_ += 1;
 }

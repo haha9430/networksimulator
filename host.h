@@ -28,6 +28,7 @@ public:
   void send(Packet *packet);
   // 패킷을 받는다
   void received(Packet *packet);
+  void received();
 };
 
 #endif
