@@ -52,4 +52,4 @@ second: second.o node.o host.o link.o link_installer.o router.o manual_router.o 
 	$(CC) $(CFLAGS) -o second second.o node.o host.o link.o link_installer.o router.o manual_router.o service.o service_installer.o message_service.o message_service_installer.o echo_service.o echo_service_installer.o
 
 clean:
-	rm -f *.o first
+	rm -f *.o first second
