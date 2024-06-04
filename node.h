@@ -2,18 +2,19 @@
 #define NODE_H
 
 #include "packet.h"
+#include "object.h"
 #include <vector>
 #include <iostream>
 
 class Link;
 
-class Node {
+class Node : public Object {
   friend class LinkInstaller;
 
 private:
   int id_;
   static int nextId_;
-
+  virtual std::string name() override { return "Node"; }
 protected: // 상속을 받아도 접근 가능해야함
   // 연결된 링크 목록
   std::vector<Link *> links_;

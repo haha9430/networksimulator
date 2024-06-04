@@ -1,9 +1,9 @@
   #include "link.h"
   
-  Node* Link::returnNodeA() {
+  Node* Link::returnNodeA() const {
     return nodeA_;
   }
-  Node* Link::returnNodeB() {
+  Node* Link::returnNodeB() const {
     return nodeB_;
   }
   void Link::send(Packet *packet, Node *node) {

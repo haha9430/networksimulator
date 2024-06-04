@@ -26,21 +26,15 @@ public:
 class Simulator {
 private:
   static double time_;
-
+  static std::queue<Schedule*> scheduleQueue;
 public:
   static double now() { return time_; }
 
   static void prepare() { srand(RANDOM_SEED); }
 
-  static void schedule(double time, std::function<void()> function) {
-    // 스케줄 큐에 스케줄을 추가한다.
-    // TODO: 구현
-  }
+  static void schedule(double time, std::function<void()> function);
 
-  static void run() {
-    // 모든 스케줄을 실행한다.
-    // TODO: 구현
-  }
+  static void run();
 };
 
 #endif

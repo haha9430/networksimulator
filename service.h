@@ -2,10 +2,11 @@
 #define SERVICE_H
 
 #include "node.h"
+#include "object.h"
 
 class Host;
 
-class Service {
+class Service : public Object {
   friend class ServiceInstaller;
 
 protected:
@@ -18,6 +19,7 @@ protected:
   //static short nextPort_;
   Service(Host *host, int port) : host_(host), port_(port) {}
 
+  virtual std::string name() override { return "Service"; }
 public:
   short returnPort();
   // 호스트의 서비스 목록에서
