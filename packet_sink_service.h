@@ -2,11 +2,19 @@
 #define PACKET_SINK_SERVICE_H
 
 #include "service.h"
+#include "packet.h"
 #include <string>
 
 class PacketSinkService : public Service {
+  friend class PacketServiceInstaller;
+  
 private:
-  PacketSinkService(Host *host, short port);
+  int bytes_;
+  PacketSinkService(Host *host, short port) : Service(host, port), bytes_(0) {}
+public:
+  void send(std::string message) override;
+  void received(Packet* packet) override;
+  int byte() { return bytes_; }
 };
 
 #endif

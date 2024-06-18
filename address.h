@@ -10,6 +10,7 @@ private:
 
 public:
   Address(int address) : address_(std::to_string(address)) {}
+  Address(std::string address) : address_(address) {}
   std::string toString() const { return address_; }
   bool operator==(const Address &rhs) const { return address_ == rhs.address_; }
 };

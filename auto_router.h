@@ -5,6 +5,7 @@
 #include "link.h"
 #include "router.h"
 #include "service.h"
+#include "node.h"
 #include <algorithm>
 #include <limits>
 #include <map>
@@ -13,7 +14,9 @@
 #include <vector>
 
 class AutoRouter : public Router {
+private: 
 public:
+  void addRoutingEntry(const Address &destination, Link *nextLink);
   void calculate(const std::vector<Node *> &nodes,
                  const std::vector<Link *> &links) {
     // 전체 노드와 링크 정보를 통해

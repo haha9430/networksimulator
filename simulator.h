@@ -13,6 +13,7 @@ class Simulator;
 class Schedule {
 private:
   double time_;
+  // 사용법 검색해볼 것, callback 구조
   std::function<void()> function_;
 
 public:
@@ -21,12 +22,17 @@ public:
 
   Schedule(double time, std::function<void()> function)
       : time_(time), function_(function) {}
+
+  bool operator()(Schedule* s) const {
+    return this->time_ > s->time();
+  }
 };
 
 class Simulator {
 private:
   static double time_;
-  static std::queue<Schedule*> scheduleQueue;
+  static std::priority_queue<Schedule> scheduleQueue;
+
 public:
   static double now() { return time_; }
 
@@ -35,6 +41,7 @@ public:
   static void schedule(double time, std::function<void()> function);
 
   static void run();
+  
 };
 
 #endif
