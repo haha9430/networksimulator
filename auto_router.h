@@ -14,7 +14,8 @@
 #include <vector>
 
 class AutoRouter : public Router {
-private: 
+private:
+  void dijkstra(int src, const std::vector<std::vector<double>> &matrix, std::vector<int> &nextHop, const std::vector<Node*> &nodes, const std::vector<Link*> &links);
 public:
   void addRoutingEntry(const Address &destination, Link *nextLink);
   void calculate(const std::vector<Node *> &nodes,
