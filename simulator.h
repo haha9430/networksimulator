@@ -23,8 +23,8 @@ public:
   Schedule(double time, std::function<void()> function)
       : time_(time), function_(function) {}
 
-  bool operator()(Schedule* s) const {
-    return this->time_ > s->time();
+  bool operator<(Schedule s) const {
+    return this->time_ > s.time();
   }
 };
 

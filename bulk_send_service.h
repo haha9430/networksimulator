@@ -12,13 +12,14 @@ class BulkSendService : Service {
 
 private:
   Address destAddress_;
+  short destPort_;
   double delay_;
   double startTime_;
   double stopTime_;
   BulkSendService(Host *host, Address destAddress, short destPort,
                   double delay = 1, double startTime = 0,
                   double stopTime = 10.0) : 
-                  Service(host, destPort),  delay_(delay), startTime_(startTime), stopTime_(stopTime), destAddress_(destAddress) {}
+                  Service(host, destPort),  delay_(delay), startTime_(startTime), stopTime_(stopTime), destAddress_(destAddress), destPort_(destPort) {}
 public:
   void send(std::string message) override;
   void received(Packet* packet) override;
